@@ -1,0 +1,30 @@
+.subtitle {
+    margin-top: 0px;
+}
+
+.subtitle1 {
+    margin-top: 3px;
+    margin-bottom: 1px;
+}
+
+
+.tooltip-as-label-demo {
+    font-size: 28px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    box-shadow: none;
+    -webkit-text-stroke: 1px white;
+}
+
+/*隐藏小箭头*/
+.tooltip-as-label-demo::before {
+    display: none;
+}
+
+
+.info-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    margin-top: 2px;
+    margin-bottom: 2px;
+}

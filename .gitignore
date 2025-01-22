@@ -1,0 +1,55 @@
+### >>> Python 核心忽略规则 <<< ###
+# 编译/缓存文件
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+*.egg
+.pytest_cache/
+
+# 打包与依赖目录
+build/
+dist/
+venv/  # 虚拟环境目录（根据实际名称修改）
+
+### >>> VSCode 深度配置 <<< ###
+# 核心规则
+.vscode/*                  # 忽略所有VSCode配置
+!.vscode/settings.json     # 例外：提交团队共享设置（如格式化规则）
+!.vscode/launch.json       # 例外：提交调试配置
+!.vscode/tasks.json        # 例外：提交构建任务
+!.vscode/extensions.json   # 例外：推荐插件列表
+
+# 高级忽略项
+*.code-workspace           # 工作区文件（含本地绝对路径）
+.history/                  # 文件编辑历史缓存
+/output/                   # 自定义输出目录（如Python插件调试输出）
+debug*.log                 # 调试日志文件
+.vscode/sftp-config.json   # SFTP插件配置（含敏感信息）
+.vscode/ipch/              # C++智能感知缓存（Python项目可忽略）
+
+### >>> 虚拟环境全适配 <<< ###
+# 覆盖所有常见虚拟环境名称
+env/
+.venv/
+.env/
+venv.bak/  # 虚拟环境备份目录
+
+### >>> 敏感数据防护 <<< ###
+# 环境变量文件（必须忽略！）
+.env
+.env.local
+.env.*.local
+secrets.json
+
+### >>> 操作系统垃圾 <<< ###
+# Mac
+.DS_Store
+._*
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Linux
+*~

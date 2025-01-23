@@ -79,72 +79,72 @@ def render():
     )
 
     # Add annotations
-    fig.update_layout(
-        annotations=[
-            dict(
-                x="2013-06-01",
-                y=0,
-                arrowcolor="rgba(63, 81, 181, 0.2)",
-                arrowsize=0.3,
-                ax=0,
-                ay=30,
-                text="state1",
-                xref="x",
-                yanchor="bottom",
-                yref="y"
-            ),
-            dict(
-                x="2014-09-13",
-                y=0,
-                arrowcolor="rgba(76, 175, 80, 0.1)",
-                arrowsize=0.3,
-                ax=0,
-                ay=30,
-                text="state2",
-                xref="x",
-                yanchor="bottom",
-                yref="y"
-            )
-        ],
-    )
+    # fig.update_layout(
+    #     annotations=[
+    #         dict(
+    #             x="2013-06-01",
+    #             y=0,
+    #             arrowcolor="rgba(63, 81, 181, 0.2)",
+    #             arrowsize=0.3,
+    #             ax=0,
+    #             ay=30,
+    #             text="state1",
+    #             xref="x",
+    #             yanchor="bottom",
+    #             yref="y"
+    #         ),
+    #         dict(
+    #             x="2014-09-13",
+    #             y=0,
+    #             arrowcolor="rgba(76, 175, 80, 0.1)",
+    #             arrowsize=0.3,
+    #             ax=0,
+    #             ay=30,
+    #             text="state2",
+    #             xref="x",
+    #             yanchor="bottom",
+    #             yref="y"
+    #         )
+    #     ],
+    # )
 
     # Add shapes
-    fig.update_layout(
-        shapes=[
-            dict(
-                fillcolor="rgba(63, 81, 181, 0.2)",
-                line={"width": 0},
-                type="rect",
-                x0="2013-01-15",
-                x1="2013-10-17",
-                xref="x",
-                y0=0,
-                y1=0.95,
-                yref="paper"
-            ),
-            dict(
-                fillcolor="rgba(76, 175, 80, 0.1)",
-                line={"width": 0},
-                type="rect",
-                x0="2013-10-22",
-                x1="2015-08-05",
-                xref="x",
-                y0=0,
-                y1=0.95,
-                yref="paper"
-            )
-        ]
-    )
+    # fig.update_layout(
+    #     shapes=[
+    #         dict(
+    #             fillcolor="rgba(63, 81, 181, 0.2)",
+    #             line={"width": 0},
+    #             type="rect",
+    #             x0="2013-01-15",
+    #             x1="2013-10-17",
+    #             xref="x",
+    #             y0=0,
+    #             y1=0.95,
+    #             yref="paper"
+    #         ),
+    #         dict(
+    #             fillcolor="rgba(76, 175, 80, 0.1)",
+    #             line={"width": 0},
+    #             type="rect",
+    #             x0="2013-10-22",
+    #             x1="2015-08-05",
+    #             xref="x",
+    #             y0=0,
+    #             y1=0.95,
+    #             yref="paper"
+    #         )
+    #     ]
+    # )
 
     # Update axes
     fig.update_layout(
         xaxis=dict(
             autorange=True,
-            range=["2012-10-31 18:36:37.3129", "2016-05-10 05:23:22.6871"],
-            rangeslider=dict(
-                autorange=True,
-                range=["2012-10-31 18:36:37.3129", "2016-05-10 05:23:22.6871"]
-            ),
+            # range=["2012-10-31 18:36:37.3129", "2016-05-10 05:23:22.6871"],
+            # rangeslider=dict(
+            #     autorange=True,
+            #     range=["2012-10-31 18:36:37.3129", "2016-05-10 05:23:22.6871"]
+            # ),
             type="date"
         ),
         yaxis=dict(
@@ -258,6 +258,7 @@ def render():
         hovermode="x",
         legend=dict(traceorder="reversed"),
         height=600,
+        # template="plotly_dark",
         template="plotly_white",
         margin=dict(
             t=30,
@@ -266,9 +267,10 @@ def render():
             r=0
         ),
         # 背景透明
-        # paper_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor='rgba(0,0,0,0)',
         # 图形透明
-        # plot_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
+        
         
         
     )

@@ -7,7 +7,7 @@ import feffery_antd_components as fac
 from feffery_dash_utils.style_utils import style
 
 from components import home, fire_maps, dashboard, timeline, about
-
+import dash_bootstrap_components as dbc
 
 def render():
     return html.Div(
@@ -58,6 +58,7 @@ def render():
                 centered=True,
                 style=style(width="100%", overflowY="auto"),
             ),
+            
         ],
         style=style(width="100%"),
         

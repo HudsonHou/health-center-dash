@@ -7,7 +7,7 @@ from dash.dependencies import Input, Output
 
 from server import app
 from config import AppConfig
-
+import dash_bootstrap_components as dbc
 
 import mobile
 
@@ -31,11 +31,20 @@ app.layout = html.Div(
                 # "opacity": "0.4",
                 "zIndex": "-1",
             },
-            className="bg-cosmos"
+            # className="bg-cosmos"
         ),
     ],
     style={"width": "100%"}
 )
+
+color_mode_switch =  html.Span(
+    [
+        dbc.Label(className="fa fa-moon", html_for="color-mode-switch"),
+        dbc.Switch( id="color-mode-switch", value=False, className="d-inline-block ms-1", persistence=True),
+        dbc.Label(className="fa fa-sun", html_for="color-mode-switch"),
+    ]
+)
+
 
 
 # 回调
@@ -59,6 +68,8 @@ def device_detect_demo(deviceInfo):
         #     )
         # ]
         return mobile.render()
+    
+    
 
 server=app.server
 

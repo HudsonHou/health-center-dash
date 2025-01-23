@@ -7,7 +7,8 @@ app = dash.Dash(
     __name__,
     compress=True,
     suppress_callback_exceptions=True,
-    external_stylesheets=[dbc.themes.BOOTSTRAP]
+    external_stylesheets=[dbc.themes.LUX],
+    
 )
 
 

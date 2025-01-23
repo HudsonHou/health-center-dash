@@ -48,21 +48,32 @@
 }
 
 
-.blur-box {
-    /* 关键样式 */
-    background: rgba(255, 255, 255, 0.3); /* 半透明背景 */
-    backdrop-filter: blur(10px); /* 毛玻璃模糊度 */
-    -webkit-backdrop-filter: blur(10px); /* Safari 兼容 */
-  
-    /* 其他样式 */
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.2); /* 半透明边框增强效果 */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
+
 
 * {
     font-family: "Microsoft YaHei", "微软雅黑", sans-serif !important;
-    font-weight: bold !important; /* 加粗效果 */
-    color: white !important; /* 字体颜色为白色 */
+    /* font-weight: bold !important;  */
+    /* color: white !important;  */
 }
+
+.glass-box {
+    position: relative;
+    /* margin: 50px; */
+    padding: 5px;
+    color: #333;
+  }
+
+  .glass-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.5); /* 半透明白色层 */
+    backdrop-filter: blur(10px);
+    z-index: -1;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* 添加投影增强层次 */
+  }

@@ -3,6 +3,7 @@ class AppConfig:
     app_title: str = "Cal-Fire Dashboard"
     # 调试模式端口
     debug_port: int = 8000
+    
 
 
 class MapConfig:

@@ -23,16 +23,18 @@ app.layout = html.Div(
                 "left": "0",
                 "width": "100%",
                 "height": "100%",
-                "backgroundImage": "url('/assets/background.webp')",
+                # "backgroundImage": "url('/assets/imgs/image.png')",
+                # 'backgroundColor': 'black',
                 "backgroundSize": "cover",  # 调整背景图片的大小
                 "backgroundRepeat": "no-repeat",  # 防止图片重复
                 "backgroundPosition": "center",  # 居中背景图片
-                "opacity": "0.4",
+                # "opacity": "0.4",
                 "zIndex": "-1",
-            }
+            },
+            className="bg-cosmos"
         ),
     ],
-    style={"width": "100%"},
+    style={"width": "100%"}
 )
 
 

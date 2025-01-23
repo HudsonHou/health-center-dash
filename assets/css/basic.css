@@ -28,3 +28,41 @@
     margin-top: 2px;
     margin-bottom: 2px;
 }
+
+
+.bg-blueHour {
+    background: 
+        linear-gradient(90deg, #7E898F 0%, #636C75 100%), 
+        radial-gradient(at top, rgba(255, 255, 255, 0.50) 0%, rgba(0, 0, 0, 0.55) 100%), 
+        radial-gradient(at top, rgba(255, 255, 255, 0.50) 0%, rgba(0, 0, 0, 0.08) 63%);
+    background-blend-mode: multiply, screen;
+}
+
+.bg-cosmos {
+    background-color: #797572;
+    background-image: 
+        linear-gradient(-173deg, rgba(255,255,255,0.20) 0%, #000000 100%),
+        linear-gradient(72deg, rgba(255,255,255,0.25) 25%, rgba(0,0,0,0.25) 100%),
+        radial-gradient(47% 102%, rgba(255,255,255,0.50) 0%, rgba(21,24,32,0.60) 120%);
+    background-blend-mode: multiply;
+}
+
+
+.blur-box {
+    /* 关键样式 */
+    background: rgba(255, 255, 255, 0.3); /* 半透明背景 */
+    backdrop-filter: blur(10px); /* 毛玻璃模糊度 */
+    -webkit-backdrop-filter: blur(10px); /* Safari 兼容 */
+  
+    /* 其他样式 */
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* 半透明边框增强效果 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+* {
+    font-family: "Microsoft YaHei", "微软雅黑", sans-serif !important;
+    font-weight: bold !important; /* 加粗效果 */
+    color: white !important; /* 字体颜色为白色 */
+}

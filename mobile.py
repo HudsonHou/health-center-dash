@@ -29,7 +29,7 @@ def render():
                 items=[
                     {
                         "key": "base",
-                        "label": "基础数据",
+                        "label": "首页",
                         "children": home.render(),
                     },
                     {
@@ -60,4 +60,5 @@ def render():
             ),
         ],
         style=style(width="100%"),
+        
     )

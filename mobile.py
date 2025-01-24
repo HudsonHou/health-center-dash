@@ -27,11 +27,11 @@ def render():
             ),
             fac.AntdTabs(
                 items=[
-                    {
-                        "key": "base",
-                        "label": "首页",
-                        "children": home.render(),
-                    },
+                    # {
+                    #     "key": "base",
+                    #     "label": "首页",
+                    #     "children": home.render(),
+                    # },
                     {
                         "key": "sit_reach",
                         "label": "坐位体前屈",
@@ -53,10 +53,12 @@ def render():
                         # "children": about.render(),
                     },
                 ],
-                defaultActiveKey="base",
+                # defaultActiveKey="sit_reach",
                 tabPosition="top",
                 centered=True,
                 style=style(width="100%", overflowY="auto"),
+                
+                
             ),
             
         ],

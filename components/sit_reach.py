@@ -82,13 +82,20 @@ def render():
         ),
         dbc.Row([
             dbc.Col([
-                dbc.Alert(
-                    "请输入以上信息，开始评估你的体前屈水平吧~",
-                    id="alert",
-                    dismissable=False,
-                    is_open=True,
-                    color="info",
+                dcc.Loading(
+                    children=[
+                        dbc.Alert(
+                        "请输入以上信息，开始评估你的体前屈水平吧~",
+                        id="alert",
+                        dismissable=False,
+                        is_open=True,
+                        color="info",
+                        ),
+                    ],
+                    overlay_style={"visibility":"visible", "filter": "blur(2px)"},
+                    # type="circle",
                 ),
+                
                 ],
                 width="100%",
             ),

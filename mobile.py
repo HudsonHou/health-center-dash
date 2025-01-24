@@ -15,7 +15,7 @@ def render():
             html.Div(
                 [
                     fac.AntdFlex(
-                        fac.AntdTitle("个人健康数据中心", level=4, style={"margin": "0px"}),
+                        fac.AntdTitle("个人健康数据中心v0.1.0", level=4, style={"margin": "0px"}),
                         justify="center",
                     ),
                     fac.AntdFlex(

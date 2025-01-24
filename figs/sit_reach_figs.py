@@ -15,6 +15,7 @@ def update_figure(fig:px.line):
             gridcolor='rgb(204, 204, 204)',
             linecolor='rgb(204, 204, 204)',
             linewidth=2,
+            fixedrange=True
         ),
         xaxis=dict(
             # tickprefix="°",##前缀
@@ -24,22 +25,25 @@ def update_figure(fig:px.line):
             gridcolor='rgb(204, 204, 204)',
             linecolor='rgb(204, 204, 204)',
             linewidth=2,
+            fixedrange=True
         ),
         yaxis_range=[0, 100],
         xaxis_range=[3, 25],
         legend=dict(
             title="年龄组",
             yanchor="top",
-            y=0.99,
+            y=1.2,
             xanchor="left",
-            x=0.1
+            x=0,
+            orientation="h",
         ),
         margin={'l': 0, 'b': 0, 'r': 0, 't': 40, 'pad': 0},
         template="plotly_white",
-        
-        
-        # hovermode='x unified',
-        # template='plotly_white'
+        dragmode=False,
+    )
+    fig.update_traces(hovertemplate= 
+        '<b>Score</b>: %{x}<br>'+
+        '<b>ECDF</b>: %{y}'
     )
 def render(gender:str):
     # 创建一个DataFrame，包含不同年龄段和性别的数据
@@ -82,8 +86,9 @@ def render(gender:str):
         # title=titel,
         color="age_group",
         markers=True,
-        # height=800,
+        height=300,
         color_discrete_sequence=px.colors.qualitative.G10,
+        
 
     )
     update_figure(fig)

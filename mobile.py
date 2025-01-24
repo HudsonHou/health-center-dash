@@ -6,7 +6,7 @@ import feffery_antd_components as fac
 
 from feffery_dash_utils.style_utils import style
 
-from components import home, fire_maps, dashboard, timeline, about
+from components import home, fire_maps, dashboard, timeline, about,sit_reach
 import dash_bootstrap_components as dbc
 
 def render():
@@ -33,9 +33,9 @@ def render():
                         "children": home.render(),
                     },
                     {
-                        "key": "behavior",
-                        "label": "行为数据",
-                        # "children": timeline.render(),
+                        "key": "sit_reach",
+                        "label": "坐位体前屈",
+                        "children": sit_reach.render(),
                     },
                     {
                         "key": "medical",

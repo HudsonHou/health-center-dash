@@ -24,6 +24,7 @@ def render():
                     ),
                 ],
                 # style=style(height="15%"),
+                className="header finisher-header",
             ),
             fac.AntdTabs(
                 items=[

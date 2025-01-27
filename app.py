@@ -16,34 +16,48 @@ app.layout = html.Div(
     [
         fuc.FefferyDeviceDetect(id="device-detect"),
         html.Div(id="page-render", style=style(padding="5px 10px 10px 5px")),  # 上右下左 # 页面渲染
-        html.Div(  # 背景图片
+        # html.Div(  # 背景图片
+        #     style={
+        #         "position": "fixed",
+        #         "top": "0",
+        #         "left": "0",
+        #         "width": "100%",
+        #         "height": "100%",
+        #         # "backgroundImage": "url('/assets/imgs/image.png')",
+        #         # 'backgroundColor': 'black',
+        #         "backgroundSize": "cover",  # 调整背景图片的大小
+        #         "backgroundRepeat": "no-repeat",  # 防止图片重复
+        #         "backgroundPosition": "center",  # 居中背景图片
+        #         # "opacity": "0.4",
+        #         "zIndex": "-1",
+        #     },
+        #     # className="bg-cosmos"
+        # ),
+        html.Div(
+            id="animated-background",
+            className="finisher-header",
             style={
-                "position": "fixed",
-                "top": "0",
-                "left": "0",
+                "position": "fixed",  # 固定定位以覆盖整个页面
                 "width": "100%",
                 "height": "100%",
-                # "backgroundImage": "url('/assets/imgs/image.png')",
-                # 'backgroundColor': 'black',
-                "backgroundSize": "cover",  # 调整背景图片的大小
-                "backgroundRepeat": "no-repeat",  # 防止图片重复
-                "backgroundPosition": "center",  # 居中背景图片
-                # "opacity": "0.4",
-                "zIndex": "-1",
-            },
-            # className="bg-cosmos"
+                "top": "0",
+                "left": "0",
+                "zIndex": "-1",       # 确保背景在内容下方
+            }
         ),
+        html.Script(src="/assets/js/0-finisher-header.es5.min.js"),
+        html.Script(src="/assets/js/1-custom.js")
     ],
     style={"width": "100%"}
 )
 
-color_mode_switch =  html.Span(
-    [
-        dbc.Label(className="fa fa-moon", html_for="color-mode-switch"),
-        dbc.Switch( id="color-mode-switch", value=False, className="d-inline-block ms-1", persistence=True),
-        dbc.Label(className="fa fa-sun", html_for="color-mode-switch"),
-    ]
-)
+# color_mode_switch =  html.Span(
+#     [
+#         dbc.Label(className="fa fa-moon", html_for="color-mode-switch"),
+#         dbc.Switch( id="color-mode-switch", value=False, className="d-inline-block ms-1", persistence=True),
+#         dbc.Label(className="fa fa-sun", html_for="color-mode-switch"),
+#     ]
+# )
 
 
 

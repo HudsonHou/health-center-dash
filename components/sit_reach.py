@@ -30,27 +30,59 @@ import random
 from figs import home,weight,sit_reach_figs
 from datetime import date
 import sqlite3
-def fetch_data():
-    conn = sqlite3.connect('data/base.db')
-    cursor = conn.cursor()
+# def fetch_data():
+#     conn = sqlite3.connect('data/base.db')
+#     cursor = conn.cursor()
     
-    # 获取列名
-    cursor.execute('PRAGMA table_info(sit_and_reach);')
-    columns = [description[1] for description in cursor.fetchall()]
+#     # 获取列名
+#     cursor.execute('PRAGMA table_info(sit_and_reach);')
+#     columns = [description[1] for description in cursor.fetchall()]
     
-    # 获取数据
-    cursor.execute('SELECT * FROM sit_and_reach')
-    data = cursor.fetchall()
+#     # 获取数据
+#     cursor.execute('SELECT * FROM sit_and_reach')
+#     data = cursor.fetchall()
     
-    conn.close()
+#     conn.close()
     
-    # 使用列名和数据创建DataFrame
-    return pd.DataFrame(data, columns=columns)
+#     # 使用列名和数据创建DataFrame
+#     return pd.DataFrame(data, columns=columns)
+
+data=pd.DataFrame(
+    data=[
+        [22, 24, 21, 23, 21, 22, 19, 21, 17, 20, 17, 20],
+        [20, 22, 19, 21, 19, 21, 17, 20, 15, 19, 15, 18],
+        [19, 21, 17, 20, 17, 19, 15, 18, 13, 17, 13, 17],
+        [18, 20, 17, 20, 16, 18, 14, 17, 13, 16, 12, 17],
+        [17, 19, 15, 19, 15, 17, 13, 16, 11, 15, 10, 15],
+        [15, 18, 14, 17, 13, 16, 11, 14,  9, 14,  9, 14],
+        [14, 17, 13, 16, 13, 15, 10, 14,  9, 13,  8, 13],
+        [13, 16, 11, 15, 11, 14,  9, 12,  7, 11,  7, 11],
+        [11, 14,  9, 13,  7, 12,  6, 10,  5,  9,  4,  9]
+    ],
+    index=[90,80,70,60,50,40,30,20,10],
+    columns=["m_18-25","wm_18-25","m_26-35","wm_26-35","m_36-45","wm_36-45","m_46-55","wm_46-55","m_56-65","wm_56-65","m_over65","wm_over65"]
+)
+data.sort_index(inplace=True)
+# 重置索引并将数据转换为长格式
+data_long = data.reset_index().melt(id_vars='index', var_name='category', value_name='value')
+
+# 提取性别（首字母'm'为男性，'w'为女性）
+data_long['gender'] = data_long['category'].str[0].map({'m': 'male', 'w': 'female'})
+
+# 提取年龄段
+data_long['age_group'] = data_long['category'].str.split('_').str[1]
+
+# 可选：删除原category列并重新排列列顺序
+data_long = data_long[['index', 'gender', 'age_group', 'value']]
+
+data_long=data_long.rename(columns={"index":"ecdf"})
+
+# data_long
 
 def render():
     
     return dbc.Container([
-        dcc.Store(id='store-sit-reach',storage_type='local',data=fetch_data().to_json()),
+        dcc.Store(id='store-sit-reach',storage_type='local',data=data_long.to_json()),
         dbc.Row([
             dbc.Col([
                 dbc.Form([
@@ -127,7 +159,7 @@ def render():
         dbc.Row([
             dbc.Col([
                 dcc.Graph(id="fig-mele",
-                          figure=sit_reach_figs.render(fetch_data(), "male"),
+                          figure=sit_reach_figs.render(data_long, "male"),
                           config={'displayModeBar': False},
                           className="glass-box"),
                 ],
@@ -141,7 +173,7 @@ def render():
         dbc.Row([
             dbc.Col([
                 dcc.Graph(id="fig-female",
-                          figure=sit_reach_figs.render(fetch_data(), "female"),
+                          figure=sit_reach_figs.render(data_long, "female"),
                           config={'displayModeBar': False},
                           className="glass-box"),
                 ],
@@ -169,7 +201,7 @@ def render():
 def find_ecdf(n_clicks,age, gender, value, data):
     if age and gender and value:
         
-        df=pd.DataFrame(json.loads(data))
+        df=data_long
 
         # 获取年龄分组,未满18按照18岁算
         def get_age_group(age):

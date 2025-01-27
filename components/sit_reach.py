@@ -126,7 +126,10 @@ def render():
         ], style={'textAlign': 'center', 'marginTop': 20}),
         dbc.Row([
             dbc.Col([
-                dcc.Graph(id="fig-mele",config={'displayModeBar': False},className="glass-box"),
+                dcc.Graph(id="fig-mele",
+                          figure=sit_reach_figs.render(fetch_data(), "male"),
+                          config={'displayModeBar': False},
+                          className="glass-box"),
                 ],
                 width="100%",
             ),
@@ -137,7 +140,10 @@ def render():
         
         dbc.Row([
             dbc.Col([
-                dcc.Graph(id="fig-female",config={'displayModeBar': False},className="glass-box"),
+                dcc.Graph(id="fig-female",
+                          figure=sit_reach_figs.render(fetch_data(), "female"),
+                          config={'displayModeBar': False},
+                          className="glass-box"),
                 ],
                 width="100%",
             ),
@@ -199,17 +205,36 @@ def find_ecdf(n_clicks,age, gender, value, data):
     # return ecdf
     # return render()
 
-## 从store加载图像
-@app.callback(
-    [Output("fig-mele", "figure"),
-     Output("fig-female", "figure"),],
-    Input("store-sit-reach", "data")
-)
-def update_graph(data):
-    # 检查data是否非空
-    df = pd.DataFrame(json.loads(data))
-    fig_mele = sit_reach_figs.render(df, "male")
-    fig_female = sit_reach_figs.render(df, "female")
-    return fig_mele, fig_female
+# ## 从store加载图像
+# @app.clientside_callback(
+#     [Output("fig-mele", "figure"),
+#      Output("fig-female", "figure"),],
+#     Input("store-sit-reach", "data")
+# )
+# def update_graph(data):
+#     # 检查data是否非空
+#     df = pd.DataFrame(json.loads(data))
+#     fig_mele = sit_reach_figs.render(df, "male")
+#     fig_female = sit_reach_figs.render(df, "female")
+#     return fig_mele, fig_female
   
 
+# app.clientside_callback(
+#     """
+#     function(data) {
+#         // 这里是客户端代码
+#         // 使用JavaScript处理数据和更新图表
+#         var df = JSON.parse(data);
+#         // 更新图表的逻辑
+#         return {
+#             'fig-mele': fig_mele,
+#             'fig-female': fig_female
+#         };
+#     }
+#     """,
+#     [
+#         Output("fig-mele", "figure"),
+#         Output("fig-female", "figure")
+#     ],
+#     Input("store-sit-reach", "data")
+# )

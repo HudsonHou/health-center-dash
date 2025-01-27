@@ -126,13 +126,7 @@ def render():
         ], style={'textAlign': 'center', 'marginTop': 20}),
         dbc.Row([
             dbc.Col([
-                dcc.Loading(
-                    children=[dcc.Graph(id="fig-mele",config={'displayModeBar': False},className="glass-box",style={"height":300})],
-                    overlay_style={"visibility":"visible", "filter": "blur(2px)"},
-                    type="circle",
-                    
-                ),
-                
+                dcc.Graph(id="fig-mele",config={'displayModeBar': False},className="glass-box"),
                 ],
                 width="100%",
             ),
@@ -143,11 +137,7 @@ def render():
         
         dbc.Row([
             dbc.Col([
-                dcc.Loading(
-                    children=[dcc.Graph(id="fig-female",config={'displayModeBar': False},className="glass-box",style={"height":300})],
-                    overlay_style={"visibility":"visible", "filter": "blur(2px)"},
-                    type="circle",
-                ),
+                dcc.Graph(id="fig-female",config={'displayModeBar': False},className="glass-box"),
                 ],
                 width="100%",
             ),
@@ -220,6 +210,6 @@ def update_graph(data):
     df = pd.DataFrame(json.loads(data))
     fig_mele = sit_reach_figs.render(df, "male")
     fig_female = sit_reach_figs.render(df, "female")
-    return fig_mele, fig_female 
+    return fig_mele, fig_female
   
 
